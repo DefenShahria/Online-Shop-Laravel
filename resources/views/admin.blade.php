@@ -69,7 +69,15 @@
             font-size: 16px;
         }
         .form-container button:hover {
-            background-color: #d81b60;
+            background-color: #c2185b;
+        }
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
         }
         .product-card {
             background-color: white;
@@ -127,10 +135,16 @@
 </header>
 
 <div class="container">
+    @if(session('success'))
+        <div class="success-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- Product Upload Form -->
     <div class="form-container">
         <h2>Upload Product</h2>
-        <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('Store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="product-name">Product Name</label>
             <input type="text" id="product-name" name="product_name" required>
